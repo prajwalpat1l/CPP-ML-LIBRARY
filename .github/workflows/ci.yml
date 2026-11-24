@@ -1,0 +1,32 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            openmp: 'ON'
+          - os: ubuntu-latest
+            openmp: 'OFF'
+          - os: macos-latest
+            openmp: 'OFF'
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DML_OPENMP=${{ matrix.openmp }}
+      - name: Build
+        run: cmake --build build --parallel 2
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+      - name: Run quickstart
+        run: ./build/linear_regression

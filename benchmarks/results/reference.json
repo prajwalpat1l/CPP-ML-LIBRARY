@@ -1,0 +1,259 @@
+{
+  "label": "00-baseline",
+  "environment": {
+    "date": "2026-10-23T19:52:08",
+    "git_commit": "6437532",
+    "git_dirty": false,
+    "cpu": "AMD Ryzen 7 5800H with Radeon Graphics",
+    "platform": "Linux-6.18.49-1-MANJARO-x86_64-with-glibc2.44",
+    "compiler": "c++ (GCC) 16.2.1 20260810",
+    "build_type": "Release",
+    "ml_native": "OFF"
+  },
+  "configs": {
+    "small": {
+      "params": {
+        "hidden": [
+          32,
+          16
+        ],
+        "epochs": 100,
+        "lr": 0.01,
+        "seed": 42,
+        "train_rows": 8000,
+        "features": 8
+      },
+      "times": [
+        1.678811073,
+        1.695465027,
+        1.666560675,
+        1.682151544,
+        1.637663755
+      ],
+      "median_seconds": 1.678811073,
+      "min_seconds": 1.637663755,
+      "max_seconds": 1.695465027,
+      "fingerprint": {
+        "test_accuracy": 91.85,
+        "train_log_loss": 0.5532236895722853,
+        "test_log_loss": 0.5521759668897683,
+        "test_pred_sum": 812.520269561034,
+        "test_pred_head": [
+          0.40508037320042156,
+          0.4056227731934704,
+          0.4059699222875978,
+          0.40705016949132156,
+          0.40616140645950954
+        ],
+        "test_pred_hash": "683b0b519bc71ba8"
+      },
+      "checks": {
+        "deterministic": true,
+        "profiled_matches": "identical"
+      },
+      "profile_train_seconds": 1.722022504,
+      "profile": [
+        {
+          "name": "MLP::fit",
+          "calls": 1,
+          "total_seconds": 1.722019084,
+          "self_seconds": 0.000362362
+        },
+        {
+          "name": "MLP::forward",
+          "calls": 100,
+          "total_seconds": 0.5165505810000001,
+          "self_seconds": 0.061704269000000006
+        },
+        {
+          "name": "Matrix::add_bias_column",
+          "calls": 600,
+          "total_seconds": 0.11446710500000001,
+          "self_seconds": 0.11446710500000001
+        },
+        {
+          "name": "Matrix::matmul",
+          "calls": 800,
+          "total_seconds": 1.311729401,
+          "self_seconds": 1.311729401
+        },
+        {
+          "name": "MLP::relu",
+          "calls": 200,
+          "total_seconds": 0.033818515,
+          "self_seconds": 0.033818515
+        },
+        {
+          "name": "MLP::sigmoid",
+          "calls": 100,
+          "total_seconds": 0.006056215,
+          "self_seconds": 0.006056215
+        },
+        {
+          "name": "MLP::backward",
+          "calls": 100,
+          "total_seconds": 1.2051061410000001,
+          "self_seconds": 0.005283564
+        },
+        {
+          "name": "Matrix::sub",
+          "calls": 400,
+          "total_seconds": 0.001425959,
+          "self_seconds": 0.001425959
+        },
+        {
+          "name": "Matrix::transpose",
+          "calls": 500,
+          "total_seconds": 0.052187007,
+          "self_seconds": 0.052187007
+        },
+        {
+          "name": "Matrix::scale",
+          "calls": 600,
+          "total_seconds": 0.00121137,
+          "self_seconds": 0.00121137
+        },
+        {
+          "name": "Matrix::remove_bias_column",
+          "calls": 200,
+          "total_seconds": 0.042321907000000006,
+          "self_seconds": 0.042321907000000006
+        },
+        {
+          "name": "MLP::relu_derivative",
+          "calls": 200,
+          "total_seconds": 0.033351445,
+          "self_seconds": 0.033351445
+        },
+        {
+          "name": "Matrix::hadamard",
+          "calls": 200,
+          "total_seconds": 0.058099965,
+          "self_seconds": 0.058099965
+        }
+      ]
+    },
+    "large": {
+      "params": {
+        "hidden": [
+          256,
+          256
+        ],
+        "epochs": 3,
+        "lr": 0.01,
+        "seed": 42,
+        "train_rows": 8000,
+        "features": 8
+      },
+      "times": [
+        13.163654543,
+        13.136006865,
+        13.436684657,
+        13.15188436,
+        13.279980944
+      ],
+      "median_seconds": 13.163654543,
+      "min_seconds": 13.136006865,
+      "max_seconds": 13.436684657,
+      "fingerprint": {
+        "test_accuracy": 40.150000000000006,
+        "train_log_loss": 0.6995171524725624,
+        "test_log_loss": 0.6991939869676265,
+        "test_pred_sum": 1007.3080918570173,
+        "test_pred_head": [
+          0.4953741355965949,
+          0.5060546390214656,
+          0.5061704550400886,
+          0.5007254683157013,
+          0.483480843246329
+        ],
+        "test_pred_hash": "4315c98fdf546952"
+      },
+      "checks": {
+        "deterministic": true,
+        "profiled_matches": "identical"
+      },
+      "profile_train_seconds": 13.188876124,
+      "profile": [
+        {
+          "name": "MLP::fit",
+          "calls": 1,
+          "total_seconds": 13.18887235,
+          "self_seconds": 1.9635e-05
+        },
+        {
+          "name": "MLP::forward",
+          "calls": 3,
+          "total_seconds": 4.3855376580000005,
+          "self_seconds": 0.07018616400000001
+        },
+        {
+          "name": "Matrix::add_bias_column",
+          "calls": 18,
+          "total_seconds": 0.051560691000000006,
+          "self_seconds": 0.051560691000000006
+        },
+        {
+          "name": "Matrix::matmul",
+          "calls": 24,
+          "total_seconds": 12.903756328,
+          "self_seconds": 12.903756328
+        },
+        {
+          "name": "MLP::relu",
+          "calls": 6,
+          "total_seconds": 0.030354682,
+          "self_seconds": 0.030354682
+        },
+        {
+          "name": "MLP::sigmoid",
+          "calls": 3,
+          "total_seconds": 0.00021124200000000002,
+          "self_seconds": 0.00021124200000000002
+        },
+        {
+          "name": "MLP::backward",
+          "calls": 3,
+          "total_seconds": 8.803315057,
+          "self_seconds": 0.002079135
+        },
+        {
+          "name": "Matrix::sub",
+          "calls": 12,
+          "total_seconds": 0.00024009900000000002,
+          "self_seconds": 0.00024009900000000002
+        },
+        {
+          "name": "Matrix::transpose",
+          "calls": 15,
+          "total_seconds": 0.054171133,
+          "self_seconds": 0.054171133
+        },
+        {
+          "name": "Matrix::scale",
+          "calls": 18,
+          "total_seconds": 0.00043030200000000003,
+          "self_seconds": 0.00043030200000000003
+        },
+        {
+          "name": "Matrix::remove_bias_column",
+          "calls": 6,
+          "total_seconds": 0.023014804,
+          "self_seconds": 0.023014804
+        },
+        {
+          "name": "MLP::relu_derivative",
+          "calls": 6,
+          "total_seconds": 0.021464076000000002,
+          "self_seconds": 0.021464076000000002
+        },
+        {
+          "name": "Matrix::hadamard",
+          "calls": 6,
+          "total_seconds": 0.031384059,
+          "self_seconds": 0.031384059
+        }
+      ]
+    }
+  }
+}

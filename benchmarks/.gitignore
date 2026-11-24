@@ -1,0 +1,4 @@
+results/*
+!results/reference.json
+plots/
+!results/final-milestones.json
